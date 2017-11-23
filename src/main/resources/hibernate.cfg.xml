@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/xxx</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">q21xkr927</property>
+
+        <!-- NOTE that after automapping with IDEA property username and password will delete -->
+        <!--and will be:  Initial SessionFactory failedorg.hibernate.service.spi.ServiceException: Unable to create requested service-->
+        <property name="show_sql">true</property>
+        <!-- NOTE that after automapping with IDEA property username and password will delete -->
+        <mapping class="ru.javastudy.hibernate.dao.ContactEntity"/>
+        <mapping class="ru.javastudy.hibernate.dao.ContactHobbyDetailEntity"/>
+        <mapping class="ru.javastudy.hibernate.dao.ContactTelDetailEntity"/>
+        <mapping class="ru.javastudy.hibernate.dao.HobbyEntity"/>
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>
