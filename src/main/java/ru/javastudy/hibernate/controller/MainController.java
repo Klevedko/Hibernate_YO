@@ -20,9 +20,7 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userJSP", new User());
         modelAndView.setViewName("index");
-       // String[] strings = new String[1];
-        //AppMain.main(strings);
-        AppMain.selectEx();
+       // AppMain.selectEx();
         return modelAndView;
     }
 
