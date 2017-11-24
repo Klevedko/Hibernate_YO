@@ -20,12 +20,16 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userJSP", new User());
         modelAndView.setViewName("index");
-        AppMain.main();
+       // String[] strings = new String[1];
+        //AppMain.main(strings);
+        AppMain.selectEx();
         return modelAndView;
     }
 
     @RequestMapping(params = "submit", value = "/check-user")
     public ModelAndView checkUser(@ModelAttribute("userJSP") User user) {
+
+
         ModelAndView modelAndView = new ModelAndView();
         if (user.getPassword().toString().equals("")) {
             modelAndView.addObject("userJSP", user);
