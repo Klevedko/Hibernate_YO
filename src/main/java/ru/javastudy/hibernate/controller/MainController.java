@@ -10,7 +10,6 @@ import ru.javastudy.hibernate.model.User;
 
 @Controller
 public class MainController {
-int t;
     /*Попадаем сюда на старте приложения */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView main() {
@@ -19,11 +18,6 @@ int t;
         modelAndView.setViewName("index");
         return modelAndView;
     }
-
-    /*как только на index.jsp подтвердится форма
-    <spring:form method="post"  modelAttribute="userJSP" action="check-user">,
-    то попадем вот сюда
-     */
 
     @RequestMapping(params = "submit", value = "/check-user")
     public ModelAndView checkUser(@ModelAttribute("userJSP") User user) {

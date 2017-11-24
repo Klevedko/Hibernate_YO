@@ -26,8 +26,8 @@ public class AppMain {
 
         System.out.println("HQL SELECT:");
 // сканер, по какому параметру ищем,
-       Scanner f = new Scanner(System.in);
-       // пока вводятся данные
+        Scanner f = new Scanner(System.in);
+        // пока вводятся данные
         while (f.hasNext()) {
             Session session = HibernateSessionFactory.getSessionFactory().openSession();
             Transaction tx = session.beginTransaction();
@@ -95,7 +95,6 @@ public class AppMain {
                 // .setString("birthDateParam", "2012-08-03")
                 .setString("nameCode", "2")
                 .executeUpdate();
-
         /*
 
         Query query = session.createQuery("update ContactEntity set firstName = :nameParam, lastName = :lastNameParam" +

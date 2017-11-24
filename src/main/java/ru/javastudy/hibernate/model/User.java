@@ -2,7 +2,6 @@ package ru.javastudy.hibernate.model;
 
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class User {
 
