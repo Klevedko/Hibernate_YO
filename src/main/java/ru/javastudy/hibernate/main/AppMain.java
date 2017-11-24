@@ -14,7 +14,6 @@ public class AppMain {
 
     public static void main(String[] args) {
         System.out.println("Hibernate tutorial start------------");
-
 //        insertExample(session);
         selectEx();
 //       updateExample(session);
@@ -23,7 +22,6 @@ public class AppMain {
     }
 
     public static void selectEx() {
-
         System.out.println("HQL SELECT:");
 // сканер, по какому параметру ищем,
         Scanner f = new Scanner(System.in);
@@ -44,16 +42,6 @@ public class AppMain {
             }
             tx.commit();
             session.close();
-            /*
-            Iterator<String> xx = query.iterate();
-            while (xx.hasNext()) {
-                Location qux = (Location)xx.next();
-                        System.out.println(xx.next());
-            }
-*/
-
-
-
         }
     }
 
@@ -62,11 +50,9 @@ public class AppMain {
 
        "insert into Object (id, name) select oo.id, oo.name from OtherObject oo";
         */
-
         //IT IS NOT WORKING HERE, Because not ContactEntity2 table;
     /*
         String queryInsert = "insert into ContactEntity(firstName, lastName, birthDate) select firstName2, lastName2, birthDate2 from ContactEntity2";
-
         int result = session.createQuery(queryInsert).executeUpdate();
     */
     }
@@ -105,9 +91,7 @@ public class AppMain {
         query.setParameter("nameParam", "NickChangedName1");
         query.setParameter("lastNameParam", "LastNameChanged1" );
         query.setParameter("birthDateParam", new Date());
-
         int result = query.executeUpdate();
-
          */
 
         System.out.println("Result: " + result);
