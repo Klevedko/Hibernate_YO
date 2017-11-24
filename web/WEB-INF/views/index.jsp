@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -13,8 +14,10 @@
         }
     </script>
 </head>
+<p><a href="http://localhost:8080/"><img src="<c:url value='/resources/images/logotype.jpg'/>" alt="welcome"/></a></p>
 
 <body>
+
 <spring:form method="post" modelAttribute="userJSP" action="check-user">
     Name: <spring:input path="name" /> <br/>
     Password: <spring:input path="password"/> <br/>
