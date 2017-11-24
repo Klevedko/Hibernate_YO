@@ -5,9 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * Created by Nick on 05.09.2015.
- */
 @Entity
 @Table(name = "hobby", schema = "", catalog = "javastudy")
 public class HobbyEntity {

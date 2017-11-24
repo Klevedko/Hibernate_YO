@@ -2,9 +2,6 @@ package ru.javastudy.hibernate.dao;
 
 import javax.persistence.*;
 
-/**
- * Created by Nick on 05.09.2015.
- */
 @Entity
 @Table(name = "contact_hobby_detail", schema = "", catalog = "javastudy")
 @IdClass(ContactHobbyDetailEntityPK.class)

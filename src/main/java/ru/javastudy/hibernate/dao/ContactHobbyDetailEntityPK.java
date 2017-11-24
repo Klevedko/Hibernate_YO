@@ -4,9 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-/**
- * Created by Nick on 05.09.2015.
- */
 public class ContactHobbyDetailEntityPK implements Serializable {
     private int contactId;
     private String hobbyId;

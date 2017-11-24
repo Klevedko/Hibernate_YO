@@ -3,25 +3,58 @@ package ru.javastudy.hibernate.main;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import ru.javastudy.hibernate.dao.ContactEntity;
 import ru.javastudy.hibernate.utils.HibernateSessionFactory;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
-/**
- * Created by Nick on 05.09.2015.
- */
 public class AppMain {
 
     public static void main(String[] args) {
         System.out.println("Hibernate tutorial start------------");
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
+
 //        insertExample(session);
-        selectEx(session);
-//        updateExample(session);
+        selectEx();
+//       updateExample(session);
 //        deleteExample(session);
-        tx.commit();
-        session.close();
+        System.exit(1);
+    }
+
+    public static void selectEx() {
+
+        System.out.println("HQL SELECT:");
+// сканер, по какому параметру ищем,
+       Scanner f = new Scanner(System.in);
+       // пока вводятся данные
+        while (f.hasNext()) {
+            Session session = HibernateSessionFactory.getSessionFactory().openSession();
+            Transaction tx = session.beginTransaction();
+            Query query = session.createQuery("from ContactEntity where firstName = :paramName");
+            query.setParameter("paramName", f.next());
+            List list = query.getResultList();
+
+            Iterator it = list.iterator();
+            // количество строк
+            System.out.println(list.size());
+            while (it.hasNext()) {
+                ContactEntity ccc = (ContactEntity) it.next();
+                System.out.println(ccc.getId() + " " + ccc.getFirstName() + " " + ccc.getBirthdate());
+            }
+            tx.commit();
+            session.close();
+            /*
+            Iterator<String> xx = query.iterate();
+            while (xx.hasNext()) {
+                Location qux = (Location)xx.next();
+                        System.out.println(xx.next());
+            }
+*/
+
+
+
+        }
     }
 
     public static void insertExample(Session session) {
@@ -43,30 +76,24 @@ public class AppMain {
         int result = session.createQuery(sqlDeleteString)
                 .setString("param", "StringName")
                 .executeUpdate();
-
         /*
-
         Query query =  session.createQuery("delete ContactEntity where firstName = :param");
         query.setParameter("param", "Leonid");
         int result = query.executeUpdate();
-
          */
-
         System.out.println("Result Delete: " + result);
     }
 
     public static void updateExample(Session session) {
         System.out.println("HQL UPDATE: ");
 
-        String queryString = "update ContactEntity set firstName = :nameParam, lastName = :lastNameParam" +
-                ", getBirthdate = :birthDateParam"+
-                " where firstName = :nameCode";
+        String queryString = "update ContactEntity set firstName = :nameParam, lastName = :lastNameParam where firstName = :nameCode";
 
         int result = session.createQuery(queryString)
-                .setString("nameParam", "StringName")
+                .setString("nameParam", "44")
                 .setString("lastNameParam", "LastNameString")
-                .setString("birthDateParam", "2012.08.03")
-                .setString("nameCode", "StringName")
+                // .setString("birthDateParam", "2012-08-03")
+                .setString("nameCode", "2")
                 .executeUpdate();
 
         /*
@@ -87,20 +114,10 @@ public class AppMain {
         System.out.println("Result: " + result);
     }
 
-    public static void selectEx(Session session) {
-        System.out.println("HQL SELECT:");
-        Query query = session.createQuery("from ContactEntity where firstName = :paramName");
-        query.setParameter("paramName", "3");
-        query.list();
-        List list = query.list();
-        //System.out.println(query.list().get(0));
-
-    }
 
     private static void printALL(List<Object> contactEntityList) {
         System.out.println("Print result:");
-
-        for(Object contact : contactEntityList) {
+        for (Object contact : contactEntityList) {
             System.out.println(contact);
         }
     }

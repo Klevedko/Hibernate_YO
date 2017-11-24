@@ -6,9 +6,6 @@ import ru.javastudy.hibernate.dao.interfaces.ContactDAO;
 
 import java.util.List;
 
-/**
- * Created by Nick on 06.09.2015.
- */
 public class ContactDAOImpl implements ContactDAO {
 
     private Session session;

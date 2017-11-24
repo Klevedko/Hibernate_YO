@@ -9,7 +9,7 @@
     <version>1.0</version>
 
     <properties>
-        <hibernate-version>5.0.1.Final</hibernate-version>
+        <hibernate-version>5.2.12.Final</hibernate-version>
     </properties>
 
     <dependencies>
