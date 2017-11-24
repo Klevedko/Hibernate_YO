@@ -5,17 +5,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import ru.javastudy.hibernate.main.AppMain;
 import ru.javastudy.hibernate.model.User;
+import sun.applet.Main;
 
 
 @Controller
 public class MainController {
+
+
     /*Попадаем сюда на старте приложения */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView main() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userJSP", new User());
         modelAndView.setViewName("index");
+
         return modelAndView;
     }
 
