@@ -20,7 +20,7 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userJSP", new User());
         modelAndView.setViewName("index");
-
+        AppMain.main();
         return modelAndView;
     }
 
