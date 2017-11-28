@@ -20,7 +20,7 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userJSP", new User());
         modelAndView.setViewName("index");
-        List<ContactEntity> employees = AppMain.selectEx();
+        // List<ContactEntity> employees = AppMain.selectEx();
 //        return new ResponseEntity<List<ContactEntity>>(employees, HttpStatus.OK);
         //AppMain.queryFindAllUsersJPA();
         // List<ContactEntity> ContactEntity = AppMain.queryFindAllUsersJPA();
