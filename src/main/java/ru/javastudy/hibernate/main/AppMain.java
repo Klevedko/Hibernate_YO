@@ -6,12 +6,13 @@ import org.hibernate.Transaction;
 import ru.javastudy.hibernate.dao.ContactEntity;
 import ru.javastudy.hibernate.utils.HibernateSessionFactory;
 
+import javax.persistence.EntityManager;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 public class AppMain {
 
+    static EntityManager entityManager;
     public static void main(String[] args) {
         System.out.println("Hibernate tutorial start------------");
 //        insertExample(session);
@@ -21,19 +22,20 @@ public class AppMain {
         System.exit(1);
     }
 
-    public static void selectEx() {
+    public static List<ContactEntity> selectEx() {
         System.out.println("HQL SELECT:");
 // сканер, по какому параметру ищем,
-        Scanner f = new Scanner(System.in);
+        // Scanner f = new Scanner(System.in);
         // пока вводятся данные
-        while (f.hasNext()) {
+
             Session session = HibernateSessionFactory.getSessionFactory().openSession();
             Transaction tx = session.beginTransaction();
             Query query = session.createQuery("from ContactEntity where firstName = :paramName");
-            query.setParameter("paramName", f.next());
+            query.setParameter("paramName", "2");
             List list = query.getResultList();
-
-            Iterator it = list.iterator();
+            List<ContactEntity> gogogo = query.list();
+            //Iterator it = list.iterator();
+            Iterator<ContactEntity> it = list.iterator();
             // количество строк
             System.out.println(list.size());
             while (it.hasNext()) {
@@ -42,8 +44,9 @@ public class AppMain {
             }
             tx.commit();
             session.close();
-        }
+return gogogo;
     }
+
 
     public static void insertExample(Session session) {
        /* HQL Only the INSERT INTO ... SELECT ... form is supported; not the INSERT INTO ... VALUES ... form.

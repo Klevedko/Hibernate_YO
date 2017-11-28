@@ -8,8 +8,11 @@
     <script>
         function isCorrect() {
             if (1 ==1) {
-                return "sdsdsadas"
+                 alert('fdds');
             }
+        }
+        function isGoodName(a) {
+            alert(a);
         }
     </script>
 </head>
@@ -17,10 +20,10 @@
 <body>
 <spring:form method="post" modelAttribute="userJSP" action="check-user">
     Name: <spring:input path="name" /> <br/>
-    Password: <spring:input path="password"/> <br/>
+    Password: <spring:input path="password" /> <br/>
     <input type='submit' name='submit' value='submit'/>
     <input type='reset' name='cancel' value='cancel'/>
-    label: <spring:input path="label" /> <br/>
+    <input type='Button' name='testAction' value='test' onclick="isCorrect()"/>
     <textarea id="my-text-box" name="asdasd" rows="1" cols="50">HERE WE GO </textarea>
 </spring:form>
 

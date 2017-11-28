@@ -5,31 +5,30 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import ru.javastudy.hibernate.dao.ContactEntity;
 import ru.javastudy.hibernate.main.AppMain;
 import ru.javastudy.hibernate.model.User;
-import sun.applet.Main;
 
+import java.util.List;
 
 @Controller
 public class MainController {
 
-
-    /*Попадаем сюда на старте приложения */
+    // первичная страница
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView main() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userJSP", new User());
         modelAndView.setViewName("index");
-       // String[] strings = new String[1];
-        //AppMain.main(strings);
-        AppMain.selectEx();
+        List<ContactEntity> employees = AppMain.selectEx();
+//        return new ResponseEntity<List<ContactEntity>>(employees, HttpStatus.OK);
+        //AppMain.queryFindAllUsersJPA();
+        // List<ContactEntity> ContactEntity = AppMain.queryFindAllUsersJPA();
         return modelAndView;
     }
 
     @RequestMapping(params = "submit", value = "/check-user")
     public ModelAndView checkUser(@ModelAttribute("userJSP") User user) {
-
-
         ModelAndView modelAndView = new ModelAndView();
         if (user.getPassword().toString().equals("")) {
             modelAndView.addObject("userJSP", user);

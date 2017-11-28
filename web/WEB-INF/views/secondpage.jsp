@@ -7,6 +7,7 @@
 Введенное имя: ${userJSP.name};
 <br/>
 Введенный пароль: ${userJSP.password};
+
 <br/>
 </body>
 </html>
