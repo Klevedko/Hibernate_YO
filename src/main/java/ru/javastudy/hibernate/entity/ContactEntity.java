@@ -30,5 +30,4 @@ public class ContactEntity {
         this.firstname = firstName;
     }
 
-
 }

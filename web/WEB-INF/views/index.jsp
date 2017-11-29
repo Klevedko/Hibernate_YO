@@ -15,7 +15,7 @@
 
     </script>
 </head>
-<p><a href="http://localhost:8080/"><img src="<c:url value='/resources/images/logotype.jpg'/>" alt="welcome"/></a></p>
+<p><a href="http://localhost:8080/"><img src="<cc:url value='/resources/images/logotype.jpg'/>" alt="welcome"/></a></p>
 
 <body>
 
@@ -28,14 +28,28 @@
     <textarea id="my-text-box" name="asdasd" rows="1" cols="50">HERE WE GO </textarea>
 </spring:form>
 
+<select>
+    <cc:forEach items="${contactList}" var="contactList">
+        <option>${contactList.id}</option>
+    </cc:forEach>
+</select>
+
+
 <table>
+    <tr>
+    <th>ISBN</th>
+    <th>     ISBN2</th>
+    </tr>
     <cc:forEach items="${contactList}" var="contactList">
         <tr>
             <td>
-                %{contactList.getId()}
+                <cc:out value="${contactList.id}"/>
+            </td>
+            <td>
+                <cc:out value="${contactList.surname}"/>
             </td>
         </tr>
     </cc:forEach>
 </table>
-    </body>
-    </html>
+</body>
+</html>
