@@ -20,7 +20,7 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userJSP", new User());
         modelAndView.setViewName("index");
-        // List<ContactEntity> employees = AppMain.selectEx();
+         List<ContactEntity> employees = AppMain.selectEx();
 //        return new ResponseEntity<List<ContactEntity>>(employees, HttpStatus.OK);
         //AppMain.queryFindAllUsersJPA();
         // List<ContactEntity> ContactEntity = AppMain.queryFindAllUsersJPA();
@@ -30,11 +30,11 @@ public class MainController {
     @RequestMapping(params = "submit", value = "/check-user")
     public ModelAndView checkUser(@ModelAttribute("userJSP") User user) {
         ModelAndView modelAndView = new ModelAndView();
-        if (user.getPassword().toString().equals("")) {
+        if (user.getName().toString().equals("")) {
             modelAndView.addObject("userJSP", user);
             modelAndView.setViewName("errorpage");
-        } else if (user.getName().toString().equals("")) {
-            modelAndView.addObject("userJSP", user);
+        } else if (user.getPassword().toString().equals("")) {
+            modelAndView.addObject("userJSP",  user);
             modelAndView.setViewName("errorpage");
         } else {
             modelAndView.setViewName("secondpage");

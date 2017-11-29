@@ -13,6 +13,7 @@ import java.util.List;
 public class AppMain {
 
     static EntityManager entityManager;
+
     public static void main(String[] args) {
         System.out.println("Hibernate tutorial start------------");
 //        insertExample(session);
@@ -28,23 +29,26 @@ public class AppMain {
         // Scanner f = new Scanner(System.in);
         // пока вводятся данные
 
-            Session session = HibernateSessionFactory.getSessionFactory().openSession();
-            Transaction tx = session.beginTransaction();
-            Query query = session.createQuery("from ContactEntity where firstName = :paramName");
-            query.setParameter("paramName", "2");
-            List list = query.getResultList();
-            List<ContactEntity> gogogo = query.list();
-            //Iterator it = list.iterator();
-            Iterator<ContactEntity> it = list.iterator();
-            // количество строк
-            System.out.println(list.size());
-            while (it.hasNext()) {
-                ContactEntity ccc = (ContactEntity) it.next();
-                System.out.println(ccc.getId() + " " + ccc.getFirstName() + " " + ccc.getBirthdate());
-            }
-            tx.commit();
-            session.close();
-return gogogo;
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from ContactEntity where firstName = :paramName");
+        query.setParameter("paramName", "2");
+        List list = query.getResultList();
+
+        // вот тут пытаюсь заполнить переменные экземпляров класса
+        List<ContactEntity> gogogo = query.list();
+
+        Iterator<ContactEntity> it = list.iterator();
+
+        // количество строк
+        System.out.println(list.size());
+        while (it.hasNext()) {
+            ContactEntity ccc = (ContactEntity) it.next();
+            System.out.println(ccc.getId() + " " + ccc.getFirstName() + " " + ccc.getBirthdate());
+        }
+        tx.commit();
+        session.close();
+        return gogogo;
     }
 
 
