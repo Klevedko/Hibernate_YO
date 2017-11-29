@@ -2,7 +2,7 @@ package ru.javastudy.hibernate.model;
 import org.springframework.stereotype.Component;
 
 @Component
-public class User {
+public class ModelUser {
 
     private String name;
     private String password;

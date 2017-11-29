@@ -3,10 +3,12 @@ package ru.javastudy.hibernate.main;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import ru.javastudy.hibernate.dao.ContactEntity;
+import ru.javastudy.hibernate.entity.ContactEntity;
+import ru.javastudy.hibernate.model.ContactModel;
 import ru.javastudy.hibernate.utils.HibernateSessionFactory;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,35 +22,28 @@ public class AppMain {
         selectEx();
 //       updateExample(session);
 //        deleteExample(session);
-        System.exit(1);
     }
 
-    public static List<ContactEntity> selectEx() {
+    public static List<ContactModel> selectEx() {
         System.out.println("HQL SELECT:");
-// сканер, по какому параметру ищем,
-        // Scanner f = new Scanner(System.in);
-        // пока вводятся данные
 
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("from ContactEntity where firstName = :paramName");
         query.setParameter("paramName", "2");
-        List list = query.getResultList();
 
-        // вот тут пытаюсь заполнить переменные экземпляров класса
-        List<ContactEntity> gogogo = query.list();
+        // List<ContactEntity> go = query.list()
 
-        Iterator<ContactEntity> it = list.iterator();
-
-        // количество строк
-        System.out.println(list.size());
-        while (it.hasNext()) {
-            ContactEntity ccc = (ContactEntity) it.next();
-            System.out.println(ccc.getId() + " " + ccc.getFirstName() + " " + ccc.getBirthdate());
+        List<ContactModel> lists = new ArrayList<>();
+        for(ContactEntity entity : (List<ContactEntity>) query.getResultList() ){
+            lists.add(new ContactModel(entity.getId(), entity.getFirstName()));
         }
+
         tx.commit();
+
         session.close();
-        return gogogo;
+        return lists;
+
     }
 
 
@@ -80,11 +75,10 @@ public class AppMain {
     public static void updateExample(Session session) {
         System.out.println("HQL UPDATE: ");
 
-        String queryString = "update ContactEntity set firstName = :nameParam, lastName = :lastNameParam where firstName = :nameCode";
+        String queryString = "update ContactEntity set firstName = :nameParam where firstName = :nameCode";
 
         int result = session.createQuery(queryString)
                 .setString("nameParam", "44")
-                .setString("lastNameParam", "LastNameString")
                 // .setString("birthDateParam", "2012-08-03")
                 .setString("nameCode", "2")
                 .executeUpdate();

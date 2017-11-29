@@ -1,4 +1,4 @@
-package ru.javastudy.hibernate.dao;
+package ru.javastudy.hibernate.dao.no;
 
 import javax.persistence.*;
 

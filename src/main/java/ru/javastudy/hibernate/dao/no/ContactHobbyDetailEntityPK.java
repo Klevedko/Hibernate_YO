@@ -1,17 +1,15 @@
-package ru.javastudy.hibernate.dao;
+package ru.javastudy.hibernate.dao.no;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "contact_hobby_detail", schema = "", catalog = "javastudy")
-@IdClass(ContactHobbyDetailEntityPK.class)
-public class ContactHobbyDetailEntity {
+public class ContactHobbyDetailEntityPK implements Serializable {
     private int contactId;
     private String hobbyId;
-    private HobbyEntity hobbyByHobbyId;
 
-    @Id
     @Column(name = "contact_id", nullable = false, insertable = true, updatable = true)
+    @Id
     public int getContactId() {
         return contactId;
     }
@@ -20,8 +18,9 @@ public class ContactHobbyDetailEntity {
         this.contactId = contactId;
     }
 
+    //NOTE that autocreate was insertable = true, updatable = true, but need both false !!!
+    @Column(name = "hobby_id", nullable = false, insertable = false, updatable = false, length = 20)
     @Id
-    @Column(name = "hobby_id", nullable = false, insertable = true, updatable = true, length = 20)
     public String getHobbyId() {
         return hobbyId;
     }
@@ -35,7 +34,7 @@ public class ContactHobbyDetailEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ContactHobbyDetailEntity that = (ContactHobbyDetailEntity) o;
+        ContactHobbyDetailEntityPK that = (ContactHobbyDetailEntityPK) o;
 
         if (contactId != that.contactId) return false;
         if (hobbyId != null ? !hobbyId.equals(that.hobbyId) : that.hobbyId != null) return false;
@@ -48,15 +47,5 @@ public class ContactHobbyDetailEntity {
         int result = contactId;
         result = 31 * result + (hobbyId != null ? hobbyId.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "hobby_id", referencedColumnName = "hobby_id", nullable = false)
-    public HobbyEntity getHobbyByHobbyId() {
-        return hobbyByHobbyId;
-    }
-
-    public void setHobbyByHobbyId(HobbyEntity hobbyByHobbyId) {
-        this.hobbyByHobbyId = hobbyByHobbyId;
     }
 }
