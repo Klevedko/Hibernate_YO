@@ -4,7 +4,7 @@
 <head>
     <title>Second Page</title>
 </head>
-<p><a href="http://localhost:8080/"><img src="<c:url value='/resources/images/logotype.jpg'/>" alt="welcome"/></a></p>
+<p><a href="http://localhost:8080/"><img src="<c:url value='/resources/images/logotype2.jpg'/>" alt="welcome"/></a></p>
 
 <body>
 Введенное имя: ${userJSP.name};

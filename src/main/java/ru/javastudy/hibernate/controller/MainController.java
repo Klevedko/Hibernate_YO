@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import ru.javastudy.hibernate.entity.ContactEntity;
 import ru.javastudy.hibernate.main.AppMain;
 import ru.javastudy.hibernate.model.ContactModel;
 import ru.javastudy.hibernate.model.ModelUser;
@@ -21,8 +20,8 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userJSP", new ModelUser());
 
-        modelAndView.setViewName("index");
-         List<ContactModel> modelResults = AppMain.selectEx();
+        modelAndView.setViewName("home");
+        List<ContactModel> modelResults = AppMain.selectEx();
         modelAndView.addObject("contactList", modelResults);
 
 //        return new ResponseEntity<List<ContactEntity>>(employees, HttpStatus.OK);
