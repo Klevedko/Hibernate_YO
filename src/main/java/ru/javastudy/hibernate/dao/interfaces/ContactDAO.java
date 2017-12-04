@@ -1,6 +1,6 @@
 package ru.javastudy.hibernate.dao.interfaces;
 
-import ru.javastudy.hibernate.entity.ContactEntity;
+import ru.javastudy.hibernate.entity.UserEntity;
 
 import java.util.List;
 
@@ -10,17 +10,17 @@ import java.util.List;
 public interface ContactDAO {
 
     // Найти все контакты.
-    public List<ContactEntity> findAll();
+    public List<UserEntity> findAll();
 
     // Найти все контакты с заданным телефоном и хобби.
-    public List<ContactEntity> findAllWithDetail();
+    public List<UserEntity> findAllWithDetail();
 
     // Найти контакт со всеми деталями по идентификатору.
-    public ContactEntity findById(Long id);
+    public UserEntity findById(Long id);
 
     // Вставить или обновить контакт.
-    public ContactEntity save(ContactEntity contact);
+    public UserEntity save(UserEntity contact);
 
     // Удалить контакт.
-    public void delete(ContactEntity contact);
+    public void delete(UserEntity contact);
 }

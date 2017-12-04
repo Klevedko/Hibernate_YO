@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "contact", schema = "", catalog = "public")
-public class ContactEntity {
+@Table(name = "users", schema = "", catalog = "public")
+public class UserEntity {
     private int id;
     private String firstname;
 

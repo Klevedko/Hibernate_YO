@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HibernateQuickStart.iml" filepath="$PROJECT_DIR$/HibernateQuickStart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reg.iml" filepath="$PROJECT_DIR$/reg.iml" />
     </modules>
   </component>
 </project>

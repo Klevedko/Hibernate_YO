@@ -1,7 +1,7 @@
 package ru.javastudy.hibernate.dao.implementations;
 
 import org.hibernate.Session;
-import ru.javastudy.hibernate.entity.ContactEntity;
+import ru.javastudy.hibernate.entity.UserEntity;
 import ru.javastudy.hibernate.dao.interfaces.ContactDAO;
 
 import java.util.List;
@@ -10,23 +10,23 @@ public class ContactDAOImpl implements ContactDAO {
 
     private Session session;
 
-    public List<ContactEntity> findAll() {
-        return session.createQuery("from ContactEntity c").list();
+    public List<UserEntity> findAll() {
+        return session.createQuery("from UserEntity c").list();
     }
 
-    public List<ContactEntity> findAllWithDetail() {
+    public List<UserEntity> findAllWithDetail() {
         return null;
     }
 
-    public ContactEntity findById(Long id) {
+    public UserEntity findById(Long id) {
         return null;
     }
 
-    public ContactEntity save(ContactEntity contact) {
+    public UserEntity save(UserEntity contact) {
         return null;
     }
 
-    public void delete(ContactEntity contact) {
+    public void delete(UserEntity contact) {
     }
 
     public void setSession(Session session) {

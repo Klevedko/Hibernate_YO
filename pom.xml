@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <groupId>ru.javastudy</groupId>
     <artifactId>ru.javastudy.hibernateStart</artifactId>
     <version>1.0</version>
@@ -15,6 +15,27 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.plugin.version>3.5</maven.compiler.plugin.version>
+        <security.admin.version>1.0-SNAPSHOT</security.admin.version>
+        <spring.version>4.3.10.RELEASE</spring.version>
+        <spring.security.version>4.2.3.RELEASE</spring.security.version>
+        <common.lang3.version>3.4</common.lang3.version>
+        <commons.io.version>2.4</commons.io.version>
+        <commons.collections.version>3.2.1</commons.collections.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.plugin.version>3.5</maven.compiler.plugin.version>
+        <maven.war.plugin.version>2.6</maven.war.plugin.version>
+        <cxf.version>3.1.9</cxf.version>
+        <activemq.version>5.3.2</activemq.version>
+        <smiley-http-proxy-servlet.version>1.6</smiley-http-proxy-servlet.version>
+        <i_novus.filestorage.version>1.3</i_novus.filestorage.version>
+        <junit.version>4.12</junit.version>
+        <mockito.version>1.10.19</mockito.version>
+        <criteria.version>3.8</criteria.version>
+        <logback.version>1.1.2</logback.version>
+        <pdfbox.version>2.0.5</pdfbox.version>
+        <postgresql.version>9.4-1212-jdbc41</postgresql.version>
+        <quartz.version>2.2.1</quartz.version>
     </properties>
 
     <dependencies>
@@ -122,6 +143,33 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <version>7.0.54</version>
         </dependency>
+<!--
+
+        <dependency>
+            <groupId>net.n2oapp.framework</groupId>
+            <artifactId>n2o-api</artifactId>
+            <version>${n2o.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.n2oapp.framework</groupId>
+            <artifactId>n2o-header</artifactId>
+            <version>${n2o.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.n2oapp.framework</groupId>
+            <artifactId>n2o-ui</artifactId>
+            <version>${n2o.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.n2oapp.framework.security</groupId>
+            <artifactId>security-admin-n2o</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.n2oapp.framework.security</groupId>
+            <artifactId>security-auth</artifactId>
+        </dependency>
+-->
     </dependencies>
     <build>
         <plugins>

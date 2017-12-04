@@ -21,27 +21,25 @@ public class MainController {
         modelAndView.addObject("userJSP", new ModelUser());
 
         modelAndView.setViewName("home");
-        List<ContactModel> modelResults = AppMain.selectEx();
-        modelAndView.addObject("contactList", modelResults);
+        //List<ContactModel> modelResults = AppMain.selectEx();
+        //modelAndView.addObject("contactList", modelResults);
 
-//        return new ResponseEntity<List<ContactEntity>>(employees, HttpStatus.OK);
+//        return new ResponseEntity<List<UserEntity>>(employees, HttpStatus.OK);
         //AppMain.queryFindAllUsersJPA();
-        // List<ContactEntity> ContactEntity = AppMain.queryFindAllUsersJPA();
+        // List<UserEntity> UserEntity = AppMain.queryFindAllUsersJPA();
         return modelAndView;
     }
 
     @RequestMapping(params = "submit", value = "/check-user")
     public ModelAndView checkUser(@ModelAttribute("userJSP") ModelUser modelUser) {
         ModelAndView modelAndView = new ModelAndView();
-        if (modelUser.getName().toString().equals("")) {
-            modelAndView.addObject("userJSP", modelUser);
-            modelAndView.setViewName("errorpage");
-        } else if (modelUser.getPassword().toString().equals("")) {
-            modelAndView.addObject("userJSP", modelUser);
-            modelAndView.setViewName("errorpage");
-        } else {
+        List<ContactModel> modelResults = AppMain.selectEx(modelUser.getName());
+        if (modelResults.size()!=0){
             modelAndView.setViewName("secondpage");
             modelAndView.addObject("userJSP", modelUser);
+        }
+        else{
+            modelAndView.setViewName("errorpage");
         }
         return modelAndView;
     }

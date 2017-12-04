@@ -25,42 +25,46 @@
         <h4><i class="icomoon-stack"></i> ЛЯ</h4>
         <hr style="margin-bottom: 10px; margin-top: 5px;">
         <div style="margin-left: 25px;">
-            <p><a href="#mimimi">mimimi</a></p>
+            <p>
+                <a href="mi.jsp">dscvbvbvdfvdfvdfvdfvdfvd</a>
+            </p>
         </div>
         </hr>
-</div>
+    </div>
 
-<spring:form method="post" modelAttribute="userJSP" action="check-user">
-    Name: <spring:input path="name"/> <br/>
-    Password: <spring:input path="password"/> <br/>
+    <spring:form method="post" modelAttribute="userJSP" action="check-user">
+    Name:
+        <spring:input path="name"/> <br/>
+    Password:
+        <spring:input path="password"/> <br/>
     <input type='submit' name='submit' value='submit'/>
     <input type='reset' name='cancel' value='cancel'/>
     <input type='Button' name='testAction' value='test' onclick="isCorrect()"/>
     <textarea id="my-text-box" name="asdasd" rows="1" cols="50">HERE WE GO </textarea>
-</spring:form>
+    </spring:form>
 
-<select>
-    <cc:forEach items="${contactList}" var="contactList">
-        <option>${contactList.id}</option>
-    </cc:forEach>
-</select>
+    <select>
+        <cc:forEach items="${contactList}" var="contactList">
+            <option>${contactList.id}</option>
+        </cc:forEach>
+    </select>
 
-<table>
-    <tr>
-    <th>ISBN</th>
-    <th>ISBN2</th>
-    </tr>
-    <cc:forEach items="${contactList}" var="contactList">
+    <table>
         <tr>
-            <td>
-                <cc:out value="${contactList.id}"/>
-            </td>
-            <td>
-                <cc:out value="${contactList.surname}"/>
-            </td>
+            <th>ISBN</th>
+            <th>ISBN2</th>
         </tr>
-    </cc:forEach>
-</table>
+        <cc:forEach items="${contactList}" var="contactList">
+            <tr>
+                <td>
+                    <cc:out value="${contactList.id}"/>
+                </td>
+                <td>
+                    <cc:out value="${contactList.surname}"/>
+                </td>
+            </tr>
+        </cc:forEach>
+    </table>
 
 </body>
 </html>

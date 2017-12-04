@@ -3,8 +3,9 @@ package ru.javastudy.hibernate.main;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import ru.javastudy.hibernate.entity.ContactEntity;
+import ru.javastudy.hibernate.entity.UserEntity;
 import ru.javastudy.hibernate.model.ContactModel;
+import ru.javastudy.hibernate.model.ModelUser;
 import ru.javastudy.hibernate.utils.HibernateSessionFactory;
 
 import javax.persistence.EntityManager;
@@ -19,23 +20,22 @@ public class AppMain {
     public static void main(String[] args) {
         System.out.println("Hibernate tutorial start------------");
 //        insertExample(session);
-        selectEx();
+        //selectEx();
 //       updateExample(session);
 //        deleteExample(session);
     }
 
-    public static List<ContactModel> selectEx() {
+    public static List<ContactModel> selectEx(String name) {
         System.out.println("HQL SELECT:");
-
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from ContactEntity where firstName = :paramName");
-        query.setParameter("paramName", "2");
+        Query query = session.createQuery("from UserEntity where firstName = :paramName");
+        query.setParameter("paramName", name );
 
-        // List<ContactEntity> go = query.list()
+        // List<UserEntity> go = query.list()
 
         List<ContactModel> lists = new ArrayList<>();
-        for(ContactEntity entity : (List<ContactEntity>) query.getResultList() ){
+        for(UserEntity entity : (List<UserEntity>) query.getResultList() ){
             lists.add(new ContactModel(entity.getId(), entity.getFirstName()));
         }
 
@@ -52,20 +52,20 @@ public class AppMain {
 
        "insert into Object (id, name) select oo.id, oo.name from OtherObject oo";
         */
-        //IT IS NOT WORKING HERE, Because not ContactEntity2 table;
+        //IT IS NOT WORKING HERE, Because not UserEntity2 table;
     /*
-        String queryInsert = "insert into ContactEntity(firstName, lastName, birthDate) select firstName2, lastName2, birthDate2 from ContactEntity2";
+        String queryInsert = "insert into UserEntity(firstName, lastName, birthDate) select firstName2, lastName2, birthDate2 from UserEntity2";
         int result = session.createQuery(queryInsert).executeUpdate();
     */
     }
 
     public static void deleteExample(Session session) {
-        String sqlDeleteString = "delete ContactEntity where firstName = :param";
+        String sqlDeleteString = "delete UserEntity where firstName = :param";
         int result = session.createQuery(sqlDeleteString)
                 .setString("param", "StringName")
                 .executeUpdate();
         /*
-        Query query =  session.createQuery("delete ContactEntity where firstName = :param");
+        Query query =  session.createQuery("delete UserEntity where firstName = :param");
         query.setParameter("param", "Leonid");
         int result = query.executeUpdate();
          */
@@ -75,7 +75,7 @@ public class AppMain {
     public static void updateExample(Session session) {
         System.out.println("HQL UPDATE: ");
 
-        String queryString = "update ContactEntity set firstName = :nameParam where firstName = :nameCode";
+        String queryString = "update UserEntity set firstName = :nameParam where firstName = :nameCode";
 
         int result = session.createQuery(queryString)
                 .setString("nameParam", "44")
@@ -84,7 +84,7 @@ public class AppMain {
                 .executeUpdate();
         /*
 
-        Query query = session.createQuery("update ContactEntity set firstName = :nameParam, lastName = :lastNameParam" +
+        Query query = session.createQuery("update UserEntity set firstName = :nameParam, lastName = :lastNameParam" +
                 ", birthDate = :birthDateParam"+
                 " where firstName = :nameCode");
 
@@ -99,9 +99,9 @@ public class AppMain {
     }
 
 
-    private static void printALL(List<Object> contactEntityList) {
+    private static void printALL(List<Object> UserEntityList) {
         System.out.println("Print result:");
-        for (Object contact : contactEntityList) {
+        for (Object contact : UserEntityList) {
             System.out.println(contact);
         }
     }

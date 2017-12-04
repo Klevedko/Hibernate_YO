@@ -9,12 +9,7 @@
 <body>
 ERROR
 <br/>
-you have entered:
-<br/>
-name = ${userJSP.name};
-<br/>
-pas = ${userJSP.password};
-<br/>
+Пользователь не найден!
 Compete it!
 <br/>
 

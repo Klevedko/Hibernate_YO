@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="HibernateQuickStart" />
+        <module name="reg" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="HibernateQuickStart" target="1.8" />
+      <module name="reg" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
