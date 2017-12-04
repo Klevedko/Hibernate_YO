@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import ru.javastudy.hibernate.main.AppMain;
-import ru.javastudy.hibernate.model.ContactModel;
 import ru.javastudy.hibernate.model.ModelUser;
 
 import java.util.List;
@@ -21,8 +20,8 @@ public class MainController {
         modelAndView.addObject("userJSP", new ModelUser());
 
         modelAndView.setViewName("home");
-        //List<ContactModel> modelResults = AppMain.selectEx();
-        //modelAndView.addObject("contactList", modelResults);
+        List<ModelUser> modelResults = AppMain.selectEx(0);
+        modelAndView.addObject("contactList", modelResults);
 
 //        return new ResponseEntity<List<UserEntity>>(employees, HttpStatus.OK);
         //AppMain.queryFindAllUsersJPA();
@@ -33,12 +32,13 @@ public class MainController {
     @RequestMapping(params = "submit", value = "/check-user")
     public ModelAndView checkUser(@ModelAttribute("userJSP") ModelUser modelUser) {
         ModelAndView modelAndView = new ModelAndView();
-        List<ContactModel> modelResults = AppMain.selectEx(modelUser.getName());
+        List<ModelUser> modelResults = AppMain.selectEx(modelUser.getId());
         if (modelResults.size()!=0){
             modelAndView.setViewName("secondpage");
             modelAndView.addObject("userJSP", modelUser);
         }
         else{
+            modelResults = AppMain.selectEx(0);
             modelAndView.setViewName("errorpage");
         }
         return modelAndView;

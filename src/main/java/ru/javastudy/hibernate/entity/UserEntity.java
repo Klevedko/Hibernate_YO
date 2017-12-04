@@ -7,7 +7,7 @@ import java.util.Date;
 @Table(name = "users", schema = "", catalog = "public")
 public class UserEntity {
     private int id;
-    private String firstname;
+    private String password;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,13 +21,12 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "firstname", columnDefinition = "", nullable = false, insertable = true, updatable = true, length = 60)
-    public String getFirstName() {
-        return firstname;
+    @Column(name = "password", columnDefinition = "", nullable = false, insertable = true, updatable = true, length = 60)
+    public String getpassword() {
+        return password;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstname = firstName;
+    public void setpassword(String password) {
+        this.password = password;
     }
-
 }

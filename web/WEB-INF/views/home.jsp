@@ -33,8 +33,8 @@
     </div>
 
     <spring:form method="post" modelAttribute="userJSP" action="check-user">
-    Name:
-        <spring:input path="name"/> <br/>
+    LoginId:
+        <spring:input path="id"/> <br/>
     Password:
         <spring:input path="password"/> <br/>
     <input type='submit' name='submit' value='submit'/>
@@ -43,28 +43,7 @@
     <textarea id="my-text-box" name="asdasd" rows="1" cols="50">HERE WE GO </textarea>
     </spring:form>
 
-    <select>
-        <cc:forEach items="${contactList}" var="contactList">
-            <option>${contactList.id}</option>
-        </cc:forEach>
-    </select>
 
-    <table>
-        <tr>
-            <th>ISBN</th>
-            <th>ISBN2</th>
-        </tr>
-        <cc:forEach items="${contactList}" var="contactList">
-            <tr>
-                <td>
-                    <cc:out value="${contactList.id}"/>
-                </td>
-                <td>
-                    <cc:out value="${contactList.surname}"/>
-                </td>
-            </tr>
-        </cc:forEach>
-    </table>
 
 </body>
 </html>
