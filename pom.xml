@@ -36,6 +36,7 @@
         <pdfbox.version>2.0.5</pdfbox.version>
         <postgresql.version>9.4-1212-jdbc41</postgresql.version>
         <quartz.version>2.2.1</quartz.version>
+        <spring.security.version>4.2.3.RELEASE</spring.security.version>
     </properties>
 
     <dependencies>
@@ -143,6 +144,27 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <version>7.0.54</version>
         </dependency>
+
+
+        <!-- Add Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>3.2.4.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>3.2.4.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>3.2.4.RELEASE</version>
+        </dependency>
+
 <!--
 
         <dependency>

@@ -5,12 +5,10 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ru.javastudy.hibernate.entity.UserEntity;
 import ru.javastudy.hibernate.model.ModelUser;
-import ru.javastudy.hibernate.model.ModelUser;
 import ru.javastudy.hibernate.utils.HibernateSessionFactory;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class AppMain {
@@ -48,10 +46,12 @@ public class AppMain {
        "insert into Object (id, name) select oo.id, oo.name from OtherObject oo";
         */
         //IT IS NOT WORKING HERE, Because not UserEntity2 table;
-    /*
-        String queryInsert = "insert into UserEntity(firstName, lastName, birthDate) select firstName2, lastName2, birthDate2 from UserEntity2";
+        Session sessiondel = HibernateSessionFactory.getSessionFactory().openSession();
+        Transaction tx = sessiondel.beginTransaction();
+        String queryInsert = "insert into UserEntity(id, password) select ";
         int result = session.createQuery(queryInsert).executeUpdate();
-    */
+        tx.commit();
+        session.close();
     }
 
     public static void deleteExample(Session session) {

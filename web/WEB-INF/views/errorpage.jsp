@@ -5,13 +5,10 @@
 <head>
     <title>Error Page</title>
 </head>
-<p><a href="http://localhost:8080/"><img src="<c:url value='/resources/images/logotype.jpg'/>" alt="welcome"/></a></p>
+<p><a href="http://localhost:8080/login"><img src="<c:url value='/resources/images/logotype.jpg'/>" alt="welcome"/></a></p>
 
 <body>
-ERROR
-<br/>
-Пользователь не найден!
-Compete it!
+ERROR! Пользователь не найден! Compete it!
 <br/>
 
 <select>
@@ -22,17 +19,17 @@ Compete it!
 
 <table>
     <tr>
-        <th>ISBN</th>
-        <th>ISBN2</th>
+        <th>Доступные ID для входа</th>
+        <!--<th>ISBN2</th>-->
     </tr>
     <cc:forEach items="${allContacts}" var="contactList">
         <tr>
             <td>
                 <cc:out value="${contactList.id}"/>
             </td>
-            <td>
-                <cc:out value="${contactList.password}"/>
-            </td>
+                <%--%><td>
+                    <cc:out value="${contactList.password}"/>
+                </td>--%>
         </tr>
     </cc:forEach>
 </table>

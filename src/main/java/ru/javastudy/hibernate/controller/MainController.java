@@ -14,16 +14,11 @@ import java.util.List;
 public class MainController {
 public List<ModelUser> modelResults;
     // первичная страница
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView main() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userJSP", new ModelUser());
-        modelAndView.setViewName("home");
-        // List<ModelUser> modelResults = AppMain.selectEx(0);
-        //modelAndView.addObject("allContacts", modelResults);
-//        return new ResponseEntity<List<UserEntity>>(employees, HttpStatus.OK);
-        //AppMain.queryFindAllUsersJPA();
-        // List<UserEntity> UserEntity = AppMain.queryFindAllUsersJPA();
+        modelAndView.setViewName("login");
         return modelAndView;
     }
 
@@ -39,7 +34,6 @@ public List<ModelUser> modelResults;
         }
         // если никто не нашелся то идем на эррор пейдж. и в ней выполняется тот же запрос НО выводятся все пользаки БД!
         else{
-            // в запросе есть анализатор. если пришел 0 то делается select * from table
             modelResults = AppMain.selectEx(0);
             modelAndView.setViewName("errorpage");
             modelAndView.addObject("allContacts", modelResults);
