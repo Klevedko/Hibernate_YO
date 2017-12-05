@@ -12,17 +12,15 @@ import java.util.List;
 
 @Controller
 public class MainController {
-
+public List<ModelUser> modelResults;
     // первичная страница
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView main() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userJSP", new ModelUser());
-
         modelAndView.setViewName("home");
-        List<ModelUser> modelResults = AppMain.selectEx(0);
-        modelAndView.addObject("contactList", modelResults);
-
+        // List<ModelUser> modelResults = AppMain.selectEx(0);
+        //modelAndView.addObject("allContacts", modelResults);
 //        return new ResponseEntity<List<UserEntity>>(employees, HttpStatus.OK);
         //AppMain.queryFindAllUsersJPA();
         // List<UserEntity> UserEntity = AppMain.queryFindAllUsersJPA();
@@ -32,14 +30,19 @@ public class MainController {
     @RequestMapping(params = "submit", value = "/check-user")
     public ModelAndView checkUser(@ModelAttribute("userJSP") ModelUser modelUser) {
         ModelAndView modelAndView = new ModelAndView();
-        List<ModelUser> modelResults = AppMain.selectEx(modelUser.getId());
+        // selectEx ищет пользака в БД по входящему параметру !
+        modelResults = AppMain.selectEx(modelUser.getId());
+        // Если чо т нашлось - ГУД. ( роботаит и идем на гуд страницу.)
         if (modelResults.size()!=0){
             modelAndView.setViewName("secondpage");
             modelAndView.addObject("userJSP", modelUser);
         }
+        // если никто не нашелся то идем на эррор пейдж. и в ней выполняется тот же запрос НО выводятся все пользаки БД!
         else{
+            // в запросе есть анализатор. если пришел 0 то делается select * from table
             modelResults = AppMain.selectEx(0);
             modelAndView.setViewName("errorpage");
+            modelAndView.addObject("allContacts", modelResults);
         }
         return modelAndView;
     }

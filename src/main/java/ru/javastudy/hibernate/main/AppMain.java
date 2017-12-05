@@ -5,10 +5,12 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ru.javastudy.hibernate.entity.UserEntity;
 import ru.javastudy.hibernate.model.ModelUser;
+import ru.javastudy.hibernate.model.ModelUser;
 import ru.javastudy.hibernate.utils.HibernateSessionFactory;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class AppMain {
@@ -23,26 +25,22 @@ public class AppMain {
 //        deleteExample(session);
     }
 
-    public static List<ModelUser> selectEx(int id) {
+    public static List<ModelUser> selectEx(int idd) {
         System.out.println("HQL SELECT:");
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from UserEntity where id = " +
-                "case when :paramName = :default then id else :paramName end ");
-        query.setParameter("paramName", id );
-        query.setParameter("default", 0);
-
+        Query query = session.createQuery("from UserEntity where id = (case when :paramName = 0 then id else :paramName end )");
+        query.setParameter("paramName", idd );
         // List<UserEntity> go = query.list()
 
         List<ModelUser> lists = new ArrayList<>();
         for(UserEntity entity : (List<UserEntity>) query.getResultList() ){
-            lists.add(new ModelUser(entity.getId(), entity.getpassword()));
+            lists.add(new ModelUser(entity.getId(), entity.getPassword()));
         }
         tx.commit();
         session.close();
         return lists;
     }
-
 
     public static void insertExample(Session session) {
        /* HQL Only the INSERT INTO ... SELECT ... form is supported; not the INSERT INTO ... VALUES ... form.
@@ -51,18 +49,18 @@ public class AppMain {
         */
         //IT IS NOT WORKING HERE, Because not UserEntity2 table;
     /*
-        String queryInsert = "insert into UserEntity(password, lastName, birthDate) select password2, lastName2, birthDate2 from UserEntity2";
+        String queryInsert = "insert into UserEntity(firstName, lastName, birthDate) select firstName2, lastName2, birthDate2 from UserEntity2";
         int result = session.createQuery(queryInsert).executeUpdate();
     */
     }
 
     public static void deleteExample(Session session) {
-        String sqlDeleteString = "delete UserEntity where password = :param";
+        String sqlDeleteString = "delete UserEntity where firstName = :param";
         int result = session.createQuery(sqlDeleteString)
                 .setString("param", "StringName")
                 .executeUpdate();
         /*
-        Query query =  session.createQuery("delete UserEntity where password = :param");
+        Query query =  session.createQuery("delete UserEntity where firstName = :param");
         query.setParameter("param", "Leonid");
         int result = query.executeUpdate();
          */
@@ -72,7 +70,7 @@ public class AppMain {
     public static void updateExample(Session session) {
         System.out.println("HQL UPDATE: ");
 
-        String queryString = "update UserEntity set password = :nameParam where password = :nameCode";
+        String queryString = "update UserEntity set firstName = :nameParam where firstName = :nameCode";
 
         int result = session.createQuery(queryString)
                 .setString("nameParam", "44")
@@ -81,9 +79,9 @@ public class AppMain {
                 .executeUpdate();
         /*
 
-        Query query = session.createQuery("update UserEntity set password = :nameParam, lastName = :lastNameParam" +
+        Query query = session.createQuery("update UserEntity set firstName = :nameParam, lastName = :lastNameParam" +
                 ", birthDate = :birthDateParam"+
-                " where password = :nameCode");
+                " where firstName = :nameCode");
 
         query.setParameter("nameCode", "Nick");
         query.setParameter("nameParam", "NickChangedName1");

@@ -1,11 +1,16 @@
 package ru.javastudy.hibernate.model;
 import org.springframework.stereotype.Component;
 
-@Component
 public class ModelUser {
 
     private int id;
     private String password;
+
+    public ModelUser(int id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+    public ModelUser(){}
 
     public int getId() {
         return id;

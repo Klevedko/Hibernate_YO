@@ -5,7 +5,7 @@
 <head>
     <title>Error Page</title>
 </head>
-<p><a href="http://localhost:8080/"><img src="<c:url value='/resources/images/logotype2.jpg'/>" alt="welcome"/></a></p>
+<p><a href="http://localhost:8080/"><img src="<c:url value='/resources/images/logotype.jpg'/>" alt="welcome"/></a></p>
 
 <body>
 ERROR
@@ -15,7 +15,7 @@ Compete it!
 <br/>
 
 <select>
-    <cc:forEach items="${contactList}" var="contactList">
+    <cc:forEach items="${allContacts}" var="contactList">
         <option>${contactList.id}</option>
     </cc:forEach>
 </select>
@@ -25,13 +25,13 @@ Compete it!
         <th>ISBN</th>
         <th>ISBN2</th>
     </tr>
-    <cc:forEach items="${contactList}" var="contactList">
+    <cc:forEach items="${allContacts}" var="contactList">
         <tr>
             <td>
                 <cc:out value="${contactList.id}"/>
             </td>
             <td>
-                <cc:out value="${contactList.surname}"/>
+                <cc:out value="${contactList.password}"/>
             </td>
         </tr>
     </cc:forEach>
