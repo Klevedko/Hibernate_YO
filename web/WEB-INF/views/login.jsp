@@ -34,9 +34,9 @@
 
     <spring:form method="post" modelAttribute="userJSP" action="check-user">
     LoginId:
-        <spring:input path="id"/> <br/>
+        <spring:input path="id" maxlength="7"  /> <br/>
     Password:
-        <spring:input path="password" maxlength="7"/> <br/>
+        <spring:input path="password" /> <br/>
     <input type='submit' name='submit' value='submit'/>
     <input type='reset' name='cancel' value='cancel'/>
     <input type='Button' name='testAction' value='test'  onclick="isCorrect()"/>
